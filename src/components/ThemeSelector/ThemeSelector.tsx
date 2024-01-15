@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {useGetColors} from '../../hooks/useGetColors';
 import Separator from '../Separator/Separator';
 import RadioButton from '../RadioButton/RadioButton';
+import {useThemeProvider} from '../../services/ThemeProvider/useThemeProvider';
 
 const mapThemeSelector = [
   {
@@ -15,7 +16,7 @@ const mapThemeSelector = [
   },
   {
     title: 'Usar as configurações do dispositivo',
-    key: 'null',
+    key: 'system',
   },
 ];
 
@@ -31,10 +32,15 @@ const mapDarkThemeSelector = [
 ];
 
 export default function ThemeSelector() {
-  const [themeSelected, setThemeSelected] = useState<string>();
+  const {theme, changeColorScheme} = useThemeProvider();
+
+  const [themeSelected, setThemeSelected] = useState<string>(theme);
   const [themeDarkSelected, setDarkThemeSelected] = useState<string>();
 
-  console.log(themeSelected);
+  function handleThemeSelector(item: string) {
+    setThemeSelected(item);
+    changeColorScheme(item as any);
+  }
 
   const {color} = useGetColors();
   return (
@@ -56,7 +62,9 @@ export default function ThemeSelector() {
           marginTop: 20,
         }}>
         {mapThemeSelector.map(item => (
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View
+            style={{flexDirection: 'row', justifyContent: 'space-between'}}
+            key={item.title}>
             <Text
               style={{color: color, fontSize: 16, maxWidth: '70%'}}
               key={item.title}>
@@ -64,7 +72,7 @@ export default function ThemeSelector() {
             </Text>
             <RadioButton
               selected={themeSelected === item.key ? true : false}
-              setSelected={() => setThemeSelected(item.key)}
+              setSelected={() => handleThemeSelector(item.key)}
             />
           </View>
         ))}
@@ -86,7 +94,9 @@ export default function ThemeSelector() {
           marginTop: 20,
         }}>
         {mapDarkThemeSelector.map(item => (
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View
+            style={{flexDirection: 'row', justifyContent: 'space-between'}}
+            key={item.title}>
             <Text style={{color: color, fontSize: 16}} key={item.title}>
               {item.title}
             </Text>

@@ -1,15 +1,17 @@
-import {useColorScheme} from 'react-native';
 import {theme} from '../theme/theme';
+import {useThemeProvider} from '../services/ThemeProvider/useThemeProvider';
 
 export function useGetColors() {
-  const scheme = useColorScheme();
+  const {colorScheme} = useThemeProvider();
+
   const {colors} = theme;
   return {
-    backgroundColor: scheme === 'light' ? colors.white : colors.black,
-    color: scheme === 'light' ? colors.black : colors.white,
-    searchBarColor: scheme === 'light' ? theme.colors.lightGray : '#202428',
+    backgroundColor: colorScheme === 'light' ? colors.white : colors.black,
+    color: colorScheme === 'light' ? colors.black : colors.white,
+    searchBarColor:
+      colorScheme === 'light' ? theme.colors.lightGray : '#202428',
     searchBarBorderColor:
-      scheme === 'light' ? '#ecf0f1' : theme.colors.darkGray,
-    searchBarPlaceholderColor: scheme === 'light' ? '#6d777e' : '#787b80',
+      colorScheme === 'light' ? '#ecf0f1' : theme.colors.darkGray,
+    searchBarPlaceholderColor: colorScheme === 'light' ? '#6d777e' : '#787b80',
   };
 }
