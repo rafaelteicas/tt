@@ -1,13 +1,13 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {useGetColors} from '../hooks/useGetColors';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Header} from '../components/Header/Header';
+import {useSafeArea} from '../hooks/useSafeArea';
 
 export default function SearchScreen() {
   const [text, setText] = useState('');
   const {backgroundColor, searchBarPlaceholderColor} = useGetColors();
-  const {top} = useSafeAreaInsets();
+  const {top} = useSafeArea();
   return (
     <View
       style={[

@@ -8,5 +8,8 @@ export const theme = {
 
     blue: 'rgb(29 155 239)',
     darkBlue: '#14212A',
+
+    darkThemeSeparator: '#ffffff45',
+    lightThemeSeparator: '#0000005a',
   },
 };

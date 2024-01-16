@@ -17,7 +17,7 @@ export function FeedScreen() {
 
   return (
     <View style={[{backgroundColor: theme.backgroundColor}, styles.container]}>
-      <Text style={{color: theme.color}}>App</Text>
+      <Text style={{color: theme.color}} />
     </View>
   );
 }

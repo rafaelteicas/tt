@@ -30,7 +30,7 @@ export default function Button({title, outline}: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 42,
+    height: 52,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 30,

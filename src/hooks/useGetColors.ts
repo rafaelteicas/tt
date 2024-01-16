@@ -18,5 +18,13 @@ export function useGetColors() {
     searchBarBorderColor:
       colorScheme === 'light' ? '#ecf0f1' : theme.colors.darkGray,
     searchBarPlaceholderColor: colorScheme === 'light' ? '#6d777e' : '#787b80',
+    separatorColor:
+      colorScheme === 'dark'
+        ? theme.colors.darkThemeSeparator
+        : theme.colors.lightThemeSeparator,
+    rippleColor:
+      colorScheme === 'dark'
+        ? theme.colors.darkThemeSeparator
+        : theme.colors.lightThemeSeparator,
   };
 }

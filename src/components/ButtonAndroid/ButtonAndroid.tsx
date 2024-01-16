@@ -1,24 +1,39 @@
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {TouchableNativeFeedback} from 'react-native';
+import {useGetColors} from '../../hooks/useGetColors';
 
-export default function ButtonAndroid() {
+type ButtonAndroidProps = {
+  title: string;
+};
+
+export default function ButtonAndroid({title}: ButtonAndroidProps) {
+  const {color, rippleColor} = useGetColors();
   return (
-    <TouchableNativeFeedback
-      style={{width: 1000, height: 1000, backgroundColor: 'red'}}>
-      <Text style={styles.buttonText}>Ola</Text>
-    </TouchableNativeFeedback>
+    <View style={styles.container}>
+      <TouchableNativeFeedback
+        background={TouchableNativeFeedback.Ripple(rippleColor, false)}
+        onPress={() => {}}>
+        <View style={styles.button}>
+          <Text style={[styles.text, {color: color}]}>{title}</Text>
+        </View>
+      </TouchableNativeFeedback>
+    </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
     alignItems: 'center',
+    justifyContent: 'center',
   },
-
-  buttonText: {
-    textAlign: 'center',
-    padding: 20,
-    color: 'black',
+  button: {
+    color: 'white',
+    width: '100%',
+    height: 52,
+    justifyContent: 'center',
+  },
+  text: {
+    paddingHorizontal: 25,
   },
 });

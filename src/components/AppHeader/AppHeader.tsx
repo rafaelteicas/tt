@@ -1,16 +1,16 @@
 import {View, StyleSheet, Pressable} from 'react-native';
 import React from 'react';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import SearchButton from '../SearchButton/SearchButton';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useGetColors} from '../../hooks/useGetColors';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
+import {useSafeArea} from '../../hooks/useSafeArea';
 
 const ICON_SIZE = 25;
 
 export function AppHeader() {
   const {color} = useGetColors();
-  const {top} = useSafeAreaInsets();
+  const {top} = useSafeArea();
   const navigation = useNavigation();
 
   return (
