@@ -17,7 +17,7 @@ export default function Button({title, outline}: Props) {
         styles.container,
         {
           backgroundColor: outline ? undefined : theme.colors.blue,
-          borderWidth: outline ? 2 : undefined,
+          borderWidth: outline ? 1 : undefined,
           borderColor: outline ? theme.colors.lightGray : undefined,
         },
       ]}>

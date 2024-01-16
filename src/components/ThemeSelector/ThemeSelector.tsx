@@ -23,23 +23,29 @@ const mapThemeSelector = [
 const mapDarkThemeSelector = [
   {
     title: 'Um pouco escuro',
-    key: 'darker1',
+    key: 'darkBlue',
   },
   {
     title: 'Totalmente escuro',
-    key: 'darker2',
+    key: 'dark',
   },
 ];
 
 export default function ThemeSelector() {
-  const {theme, changeColorScheme} = useThemeProvider();
+  const {theme, darkMode, changeDarkMode, changeColorScheme} =
+    useThemeProvider();
 
   const [themeSelected, setThemeSelected] = useState<string>(theme);
-  const [themeDarkSelected, setDarkThemeSelected] = useState<string>();
+  const [themeDarkSelected, setDarkThemeSelected] = useState<string>(darkMode);
 
   function handleThemeSelector(item: string) {
     setThemeSelected(item);
     changeColorScheme(item as any);
+  }
+
+  function handleDarkModeSelector(item: string) {
+    setDarkThemeSelected(item);
+    changeDarkMode(item as any);
   }
 
   const {color} = useGetColors();
@@ -102,7 +108,7 @@ export default function ThemeSelector() {
             </Text>
             <RadioButton
               selected={themeDarkSelected === item.key ? true : false}
-              setSelected={() => setDarkThemeSelected(item.key)}
+              setSelected={() => handleDarkModeSelector(item.key)}
             />
           </View>
         ))}

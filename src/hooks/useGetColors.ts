@@ -2,11 +2,16 @@ import {theme} from '../theme/theme';
 import {useThemeProvider} from '../services/ThemeProvider/useThemeProvider';
 
 export function useGetColors() {
-  const {colorScheme} = useThemeProvider();
+  const {colorScheme, darkMode} = useThemeProvider();
 
   const {colors} = theme;
   return {
-    backgroundColor: colorScheme === 'light' ? colors.white : colors.black,
+    backgroundColor:
+      colorScheme === 'light'
+        ? colors.white
+        : darkMode === 'dark'
+        ? colors.black
+        : colors.darkBlue,
     color: colorScheme === 'light' ? colors.black : colors.white,
     searchBarColor:
       colorScheme === 'light' ? theme.colors.lightGray : '#202428',
