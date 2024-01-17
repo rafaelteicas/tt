@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {DrawerContentComponentProps} from '@react-navigation/drawer';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {useGetColors} from '../../hooks/useGetColors';
@@ -11,6 +11,13 @@ import ThemeSelector from '../../components/ThemeSelector/ThemeSelector';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import {useThemeProvider} from '../../services/ThemeProvider/useThemeProvider';
 import {useSafeArea} from '../../hooks/useSafeArea';
+import {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
+import {theme} from '../../theme/theme';
 
 const drawerIcons = [
   {
@@ -30,13 +37,50 @@ const drawerIcons = [
 export function CustomDrawerComponent({}: DrawerContentComponentProps) {
   const navigation = useNavigation();
   const {colorScheme} = useThemeProvider();
+  const {backgroundColor} = useGetColors();
   const {top, bottom} = useSafeArea();
   const {color, searchBarPlaceholderColor} = useGetColors();
   const {setModal} = useModal();
+  const animatedValue = useSharedValue(0);
+  const animatedSettingsViewValue = useSharedValue(-100);
+  const animatedColor = useSharedValue(color);
+  const [settingsView, setSettingsView] = useState(false);
+  const AnimatedIcon = Animated.createAnimatedComponent(Icon);
+
+  const animation = useAnimatedStyle(() => ({
+    transform: [{rotateZ: `${animatedValue.value}deg`}],
+    color: animatedColor.value,
+  }));
+
+  const settingsViewAnimation = useAnimatedStyle(() => ({
+    transform: [{translateY: animatedSettingsViewValue.value}],
+  }));
+
+  function handlePressAnimation() {
+    if (animatedValue.value === -180) {
+      animatedValue.value = withTiming(0, {duration: 300});
+      animatedColor.value = color;
+      animatedSettingsViewValue.value = withTiming(-100, {duration: 300});
+      setTimeout(() => {
+        setSettingsView(false);
+      }, 200);
+    } else {
+      animatedValue.value = withTiming(-180, {duration: 300});
+      animatedColor.value = theme.colors.blue;
+      setSettingsView(true);
+      animatedSettingsViewValue.value = withTiming(10, {duration: 300});
+    }
+  }
+
   return (
     <View style={{paddingTop: top, flex: 1, paddingBottom: bottom}}>
       <View style={styles.container}>
-        <View style={{paddingHorizontal: 20}}>
+        <View
+          style={{
+            paddingHorizontal: 20,
+            zIndex: 1,
+            backgroundColor: backgroundColor,
+          }}>
           <Text
             style={{
               color: color,
@@ -69,14 +113,35 @@ export function CustomDrawerComponent({}: DrawerContentComponentProps) {
           </View>
           <Separator marginBottom={20} />
         </View>
-        <View style={{position: 'relative'}}>
-          <ButtonAndroid title="Configurações & Suporte" />
-          <Icon
-            name="chevron-down-outline"
-            size={20}
-            color={color}
-            style={styles.iconStyle}
+        <View
+          style={{
+            position: 'relative',
+            backgroundColor: backgroundColor,
+            zIndex: 1,
+          }}>
+          <ButtonAndroid
+            title="Configurações & Suporte"
+            onPress={handlePressAnimation}
+            RightComponent={
+              <AnimatedIcon
+                name="chevron-down-outline"
+                size={20}
+                color={color}
+                style={[styles.iconStyle, animation]}
+              />
+            }
           />
+        </View>
+        <View style={{paddingHorizontal: 20}}>
+          {settingsView && (
+            <Animated.View style={[settingsViewAnimation, {zIndex: -1}]}>
+              <ButtonAndroid
+                title="Configurações e privacidade"
+                onPress={handlePressAnimation}
+                LeftComponent={<Icon name="settings-outline" />}
+              />
+            </Animated.View>
+          )}
         </View>
       </View>
       <Pressable
@@ -100,13 +165,11 @@ export function CustomDrawerComponent({}: DrawerContentComponentProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  iconContainer: {
-    position: 'absolute',
-    bottom: 0,
+    zIndex: 1,
   },
   buttonContainer: {
     gap: 20,
+    zIndex: 1,
   },
   textIcons: {
     fontSize: 16,

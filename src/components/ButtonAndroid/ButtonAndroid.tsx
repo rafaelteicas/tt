@@ -5,33 +5,47 @@ import {useGetColors} from '../../hooks/useGetColors';
 
 type ButtonAndroidProps = {
   title: string;
+  onPress?: () => void;
+  RightComponent?: React.ReactElement;
+  LeftComponent?: React.ReactElement;
 };
 
-export default function ButtonAndroid({title}: ButtonAndroidProps) {
+export default function ButtonAndroid({
+  title,
+  RightComponent,
+  LeftComponent,
+  onPress,
+}: ButtonAndroidProps) {
   const {color, rippleColor} = useGetColors();
   return (
-    <View style={styles.container}>
-      <TouchableNativeFeedback
-        background={TouchableNativeFeedback.Ripple(rippleColor, false)}
-        onPress={() => {}}>
-        <View style={styles.button}>
-          <Text style={[styles.text, {color: color}]}>{title}</Text>
-        </View>
-      </TouchableNativeFeedback>
-    </View>
+    <TouchableNativeFeedback
+      background={TouchableNativeFeedback.Ripple(rippleColor, false)}
+      onPress={onPress}
+      style={[
+        styles.container,
+        {
+          flexDirection: RightComponent ? 'row' : 'row-reverse',
+          justifyContent: RightComponent ? 'space-between' : undefined,
+        },
+      ]}>
+      <View style={styles.button}>
+        {LeftComponent}
+        <Text style={[styles.text, {color: color}]}>{title}</Text>
+        {RightComponent}
+      </View>
+    </TouchableNativeFeedback>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
   },
   button: {
     color: 'white',
-    width: '100%',
     height: 52,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   text: {
     paddingHorizontal: 25,

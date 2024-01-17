@@ -1,10 +1,11 @@
-import {View, Text} from 'react-native';
 import React from 'react';
+import {CustomDrawerComponent} from '../routes/components/CustomDrawerComponent';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default function ProfileScreen() {
   return (
-    <View>
-      <Text>ProfileScreen</Text>
-    </View>
+    <ScrollView style={{backgroundColor: 'red'}}>
+      <CustomDrawerComponent />
+    </ScrollView>
   );
 }
