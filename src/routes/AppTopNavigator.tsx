@@ -24,10 +24,16 @@ export default function AppTopNavigator() {
           name="ForYouScreen"
           component={ForYouScreen}
           options={{
-            title: 'For You',
+            title: 'For you',
           }}
         />
-        <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Tab.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{
+            title: 'Trending',
+          }}
+        />
       </Tab.Navigator>
     </View>
   );

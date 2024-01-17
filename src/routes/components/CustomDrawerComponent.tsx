@@ -4,7 +4,6 @@ import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {useGetColors} from '../../hooks/useGetColors';
 import Button from '../../components/Button/Button';
 import Separator from '../../components/Separator/Separator';
-import Icon from 'react-native-vector-icons/Ionicons';
 import ButtonAndroid from '../../components/ButtonAndroid/ButtonAndroid';
 import {useModal} from '../../services/Modal/useModal';
 import ThemeSelector from '../../components/ThemeSelector/ThemeSelector';
@@ -18,6 +17,7 @@ import {
 } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import {theme} from '../../theme/theme';
+import Icon from '../../components/Icon/Icon';
 
 const drawerIcons = [
   {
@@ -35,17 +35,16 @@ const drawerIcons = [
 ];
 
 export function CustomDrawerComponent({}: DrawerContentComponentProps) {
+  const {color, searchBarPlaceholderColor} = useGetColors();
   const navigation = useNavigation();
   const {colorScheme} = useThemeProvider();
   const {backgroundColor} = useGetColors();
   const {top, bottom} = useSafeArea();
-  const {color, searchBarPlaceholderColor} = useGetColors();
   const {setModal} = useModal();
   const animatedValue = useSharedValue(0);
   const animatedSettingsViewValue = useSharedValue(-100);
   const animatedColor = useSharedValue(color);
   const [settingsView, setSettingsView] = useState(false);
-  const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
   const animation = useAnimatedStyle(() => ({
     transform: [{rotateZ: `${animatedValue.value}deg`}],
@@ -125,7 +124,7 @@ export function CustomDrawerComponent({}: DrawerContentComponentProps) {
             onPress={handlePressAnimation}
             bold
             RightComponent={
-              <AnimatedIcon
+              <Icon
                 name="chevron-down-outline"
                 size={20}
                 color={color}

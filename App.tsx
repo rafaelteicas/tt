@@ -11,17 +11,17 @@ import ThemeProvider from './src/services/ThemeProvider/ThemeProvider';
 export default function App() {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
-      <ThemeProvider>
-        <SafeAreaProvider>
-          <ModalProvider>
-            <FloatingButtonProvider>
+      <SafeAreaProvider>
+        <ThemeProvider>
+          <FloatingButtonProvider>
+            <ModalProvider>
               <Router />
-              <FloatingButton />
               <Modal />
-            </FloatingButtonProvider>
-          </ModalProvider>
-        </SafeAreaProvider>
-      </ThemeProvider>
+            </ModalProvider>
+            <FloatingButton />
+          </FloatingButtonProvider>
+        </ThemeProvider>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }

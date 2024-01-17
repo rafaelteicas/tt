@@ -43,7 +43,7 @@ export function CustomAppTopNavigator({
         }
 
         return (
-          <TouchableNativeFeedback onPress={onPress}>
+          <TouchableNativeFeedback onPress={onPress} key={index}>
             <View
               style={{
                 alignItems: 'center',
