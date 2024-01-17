@@ -19,7 +19,7 @@ export default function AppDrawerNavigator() {
           backgroundColor: backgroundColor,
         },
       }}>
-      <Drawer.Screen name="FeedScreen" component={AppTopNavigator} />
+      <Drawer.Screen name="ForYouScreen" component={AppTopNavigator} />
     </Drawer.Navigator>
   );
 }

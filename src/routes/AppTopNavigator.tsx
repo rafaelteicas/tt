@@ -1,11 +1,11 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {FeedScreen} from '../screens/FeedScreen';
+import {ForYouScreen} from '../screens/ForYouScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import {AppHeader} from '../components/AppHeader/AppHeader';
 import {View} from 'react-native';
 import {useGetColors} from '../hooks/useGetColors';
-import FloatingButton from '../components/FloatingButton/FloatingButton';
+import {CustomAppTopNavigator} from './components/CustomAppTopNavigator';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -14,14 +14,19 @@ export default function AppTopNavigator() {
   return (
     <View style={{flex: 1, backgroundColor: backgroundColor}}>
       <AppHeader />
-      <FloatingButton />
       <Tab.Navigator
+        tabBar={props => <CustomAppTopNavigator {...props} />}
         screenOptions={{
-          tabBarStyle: {backgroundColor: backgroundColor},
           tabBarInactiveTintColor: color,
           tabBarActiveTintColor: color,
         }}>
-        <Tab.Screen name="Settings" component={FeedScreen} />
+        <Tab.Screen
+          name="ForYouScreen"
+          component={ForYouScreen}
+          options={{
+            title: 'For You',
+          }}
+        />
         <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
       </Tab.Navigator>
     </View>

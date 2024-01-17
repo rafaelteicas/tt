@@ -54,21 +54,22 @@ export function CustomDrawerComponent({}: DrawerContentComponentProps) {
 
   const settingsViewAnimation = useAnimatedStyle(() => ({
     transform: [{translateY: animatedSettingsViewValue.value}],
+    zIndex: -1,
   }));
 
   function handlePressAnimation() {
     if (animatedValue.value === -180) {
-      animatedValue.value = withTiming(0, {duration: 300});
+      animatedValue.value = withTiming(0);
       animatedColor.value = color;
-      animatedSettingsViewValue.value = withTiming(-100, {duration: 300});
+      animatedSettingsViewValue.value = withTiming(-100);
       setTimeout(() => {
         setSettingsView(false);
       }, 200);
     } else {
-      animatedValue.value = withTiming(-180, {duration: 300});
+      animatedValue.value = withTiming(-180);
       animatedColor.value = theme.colors.blue;
       setSettingsView(true);
-      animatedSettingsViewValue.value = withTiming(10, {duration: 300});
+      animatedSettingsViewValue.value = withTiming(10);
     }
   }
 
@@ -120,8 +121,9 @@ export function CustomDrawerComponent({}: DrawerContentComponentProps) {
             zIndex: 1,
           }}>
           <ButtonAndroid
-            title="Configurações & Suporte"
+            title="Configurações & suporte"
             onPress={handlePressAnimation}
+            bold
             RightComponent={
               <AnimatedIcon
                 name="chevron-down-outline"
@@ -132,17 +134,24 @@ export function CustomDrawerComponent({}: DrawerContentComponentProps) {
             }
           />
         </View>
-        <View style={{paddingHorizontal: 20}}>
-          {settingsView && (
-            <Animated.View style={[settingsViewAnimation, {zIndex: -1}]}>
-              <ButtonAndroid
-                title="Configurações e privacidade"
-                onPress={handlePressAnimation}
-                LeftComponent={<Icon name="settings-outline" />}
-              />
-            </Animated.View>
-          )}
-        </View>
+        {settingsView && (
+          <Animated.View style={[settingsViewAnimation, {zIndex: -1}]}>
+            <ButtonAndroid
+              title="Configurações e privacidade"
+              onPress={handlePressAnimation}
+              LeftComponent={
+                <Icon name="settings-outline" color={color} size={20} />
+              }
+            />
+            <ButtonAndroid
+              title="Central de Ajuda"
+              onPress={handlePressAnimation}
+              LeftComponent={
+                <Icon name="help-circle-outline" color={color} size={20} />
+              }
+            />
+          </Animated.View>
+        )}
       </View>
       <Pressable
         onPress={() => {

@@ -8,12 +8,14 @@ type ButtonAndroidProps = {
   onPress?: () => void;
   RightComponent?: React.ReactElement;
   LeftComponent?: React.ReactElement;
+  bold?: boolean;
 };
 
 export default function ButtonAndroid({
   title,
   RightComponent,
   LeftComponent,
+  bold,
   onPress,
 }: ButtonAndroidProps) {
   const {color, rippleColor} = useGetColors();
@@ -30,7 +32,13 @@ export default function ButtonAndroid({
       ]}>
       <View style={styles.button}>
         {LeftComponent}
-        <Text style={[styles.text, {color: color}]}>{title}</Text>
+        <Text
+          style={[
+            styles.text,
+            {color: color, fontWeight: bold ? 'bold' : undefined},
+          ]}>
+          {title}
+        </Text>
         {RightComponent}
       </View>
     </TouchableNativeFeedback>
@@ -46,8 +54,8 @@ const styles = StyleSheet.create({
     height: 52,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  text: {
     paddingHorizontal: 25,
+    gap: 20,
   },
+  text: {},
 });

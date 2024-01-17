@@ -3,7 +3,7 @@ import {useGetColors} from '../hooks/useGetColors';
 import {StyleSheet, Text, View} from 'react-native';
 import {useFloatingButton} from '../services/FloatingButton/useFloatingButton';
 
-export function FeedScreen() {
+export function ForYouScreen() {
   const theme = useGetColors();
   const {showFloatingButton} = useFloatingButton();
 

@@ -4,7 +4,6 @@ import React, {useState} from 'react';
 import {useModal} from './useModal';
 import Animated, {
   FadeInDown,
-  FadeInUp,
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
@@ -43,10 +42,7 @@ export default function Modal() {
     return null;
   }
   return (
-    <Animated.View
-      entering={FadeInDown}
-      exiting={FadeInUp}
-      style={styles.container}>
+    <Animated.View entering={FadeInDown} style={styles.container}>
       <Pressable onPress={hideModal}>
         <View style={styles.background} />
       </Pressable>

@@ -25,8 +25,6 @@ export default function ThemeProvider({children}: React.PropsWithChildren) {
   const [theme, setTheme] = useState<Themes>('system');
   const [darkMode, setDarkMode] = useState<DarkModeTypes>('dark');
 
-  console.log(systemColorScheme);
-
   async function getTheme() {
     try {
       const theme = await asyncStorage.getItem<Themes>(THEME_KEY);
