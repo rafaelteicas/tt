@@ -73,7 +73,12 @@ export function CustomDrawerComponent({}: DrawerContentComponentProps) {
   }
 
   return (
-    <View style={{paddingTop: top, flex: 1, paddingBottom: bottom}}>
+    <View
+      style={{
+        paddingTop: top,
+        flex: 1,
+        paddingBottom: bottom,
+      }}>
       <View style={styles.container}>
         <View
           style={{
@@ -94,10 +99,29 @@ export function CustomDrawerComponent({}: DrawerContentComponentProps) {
             Crie uma conta oficial no X para vivenciar a experiencia completa.
           </Text>
           <View style={styles.buttonContainer}>
-            <Button title="Criar conta" />
-            <Button title="Entrar" outline />
+            <Button
+              title="Criar conta"
+              onPress={() =>
+                navigation.navigate('CreateAccountScreen', {
+                  text: 'Veja o que está \nacontecendo\nno mundo neste momento.',
+                })
+              }
+            />
+            <ButtonAndroid
+              title="Entrar"
+              outline={{color: theme.colors.darkGray, width: 1}}
+              borderRadius={30}
+              customStyle={{justifyContent: 'center'}}
+              bold
+              onPress={() =>
+                navigation.navigate('CreateAccountScreen', {
+                  text: 'Que bom ver você de novo! Entre na sua conta para ver o que há de mais recente.',
+                  hide: true,
+                })
+              }
+            />
           </View>
-          <Separator marginTop={30} />
+          <Separator marginTop={30} style={{paddingTop: 0.5}} />
           <View
             style={{
               paddingVertical: 20,

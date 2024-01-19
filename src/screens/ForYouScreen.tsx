@@ -5,6 +5,7 @@ import {useFloatingButton} from '../services/FloatingButton/useFloatingButton';
 import {useGetPosts} from '../domain/Post/useCases/useGetPosts';
 import {PostType} from '../domain/Post/postTypes';
 import {PostComponent} from '../components/PostComponent/PostComponent';
+import Separator from '../components/Separator/Separator';
 
 export function ForYouScreen() {
   const theme = useGetColors();
@@ -15,12 +16,11 @@ export function ForYouScreen() {
     showFloatingButton({
       icon: 'add-outline',
     });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function renderItem({item}: ListRenderItemInfo<PostType>) {
-    return <PostComponent {...item} key={item.text} />;
+    return <PostComponent {...item} />;
   }
 
   return (
@@ -29,6 +29,7 @@ export function ForYouScreen() {
         keyExtractor={item => item.text}
         data={posts}
         renderItem={renderItem}
+        ItemSeparatorComponent={() => <Separator />}
       />
     </View>
   );

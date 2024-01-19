@@ -7,9 +7,10 @@ import {theme} from '../../theme/theme';
 interface Props extends ButtonProps {
   title: string;
   outline?: boolean;
+  onPress?: () => void;
 }
 
-export default function Button({title, outline}: Props) {
+export default function Button({title, outline, onPress}: Props) {
   const {color} = useGetColors();
   return (
     <TouchableWithoutFeedback
@@ -18,9 +19,10 @@ export default function Button({title, outline}: Props) {
         {
           backgroundColor: outline ? undefined : theme.colors.blue,
           borderWidth: outline ? 1 : undefined,
-          borderColor: outline ? theme.colors.lightGray : undefined,
+          borderColor: outline ? theme.colors.darkGray : undefined,
         },
-      ]}>
+      ]}
+      onPress={onPress}>
       <Text style={[styles.text, {color: outline ? color : '#FFF'}]}>
         {title}
       </Text>

@@ -13,8 +13,7 @@ export function useGetColors() {
         ? colors.black
         : colors.darkBlue,
     color: colorScheme === 'light' ? colors.black : colors.white,
-    searchBarColor:
-      colorScheme === 'light' ? theme.colors.lightGray : '#202428',
+    searchBarColor: theme.colors.darkGray,
     searchBarBorderColor:
       colorScheme === 'light' ? '#ecf0f1' : theme.colors.darkGray,
     searchBarPlaceholderColor: colorScheme === 'light' ? '#6d777e' : '#787b80',

@@ -11,7 +11,7 @@ export function CustomAppTopNavigator({
   descriptors,
   navigation,
 }: MaterialTopTabBarProps) {
-  const {color, separatorColor} = useGetColors();
+  const {color, separatorColor, rippleColor} = useGetColors();
   return (
     <View
       style={{
@@ -43,7 +43,10 @@ export function CustomAppTopNavigator({
         }
 
         return (
-          <TouchableNativeFeedback onPress={onPress} key={index}>
+          <TouchableNativeFeedback
+            onPress={onPress}
+            key={index}
+            background={TouchableNativeFeedback.Ripple(rippleColor, false)}>
             <View
               style={{
                 alignItems: 'center',

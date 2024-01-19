@@ -1,4 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  ColorValue,
+  StyleProp,
+  StyleSheet,
+  Text,
+  View,
+  ViewStyle,
+} from 'react-native';
 import React from 'react';
 import {TouchableNativeFeedback} from 'react-native';
 import {useGetColors} from '../../hooks/useGetColors';
@@ -9,6 +16,16 @@ type ButtonAndroidProps = {
   RightComponent?: React.ReactElement;
   LeftComponent?: React.ReactElement;
   bold?: boolean;
+  backgroundColor?: ColorValue;
+  textColor?: ColorValue;
+  outline?: {
+    color: ColorValue;
+    width: number;
+  };
+  borderRadius?: number;
+  customStyle?: StyleProp<ViewStyle>;
+  buttonHeight?: number;
+  fontSize?: number;
 };
 
 export default function ButtonAndroid({
@@ -16,32 +33,46 @@ export default function ButtonAndroid({
   RightComponent,
   LeftComponent,
   bold,
+  textColor,
+  backgroundColor,
+  outline,
+  borderRadius,
+  customStyle,
+  buttonHeight,
+  fontSize,
   onPress,
 }: ButtonAndroidProps) {
   const {color, rippleColor} = useGetColors();
   return (
-    <TouchableNativeFeedback
-      background={TouchableNativeFeedback.Ripple(rippleColor, false)}
-      onPress={onPress}
-      style={[
-        styles.container,
-        {
-          flexDirection: RightComponent ? 'row' : 'row-reverse',
-          justifyContent: RightComponent ? 'space-between' : undefined,
-        },
-      ]}>
-      <View style={styles.button}>
-        {LeftComponent}
-        <Text
-          style={[
-            styles.text,
-            {color: color, fontWeight: bold ? 'bold' : undefined},
-          ]}>
-          {title}
-        </Text>
-        {RightComponent}
-      </View>
-    </TouchableNativeFeedback>
+    <View
+      style={{
+        maxHeight: buttonHeight,
+        justifyContent: 'center',
+        backgroundColor,
+        borderColor: outline?.color,
+        borderWidth: outline?.width,
+        borderRadius,
+      }}>
+      <TouchableNativeFeedback
+        background={TouchableNativeFeedback.Ripple(rippleColor, true)}
+        onPress={onPress}>
+        <View style={[styles.button, customStyle]}>
+          {LeftComponent}
+          <Text
+            style={[
+              styles.text,
+              {
+                color: textColor || color,
+                fontWeight: bold ? 'bold' : undefined,
+                fontSize,
+              },
+            ]}>
+            {title}
+          </Text>
+          {RightComponent}
+        </View>
+      </TouchableNativeFeedback>
+    </View>
   );
 }
 

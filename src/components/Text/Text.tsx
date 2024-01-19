@@ -5,18 +5,26 @@ import {useGetColors} from '../../hooks/useGetColors';
 interface Props extends TextProps {
   paragraph?: boolean;
   bold?: boolean;
+  fontSize?: number;
 }
 
-export default function Text({children, paragraph, bold, ...textProps}: Props) {
+export default function Text({
+  children,
+  paragraph,
+  bold,
+  fontSize,
+  ...textProps
+}: Props) {
   const {color} = useGetColors();
   return (
     <RNText
+      {...textProps}
       style={{
         color: color,
         opacity: paragraph ? 0.6 : undefined,
         fontWeight: bold ? 'bold' : undefined,
-      }}
-      {...textProps}>
+        fontSize,
+      }}>
       {children}
     </RNText>
   );

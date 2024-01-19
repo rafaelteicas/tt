@@ -6,7 +6,7 @@ import Animated from 'react-native-reanimated';
 
 interface Props extends TextProps {
   name: string;
-  size: number;
+  size?: number;
   color?: any;
 }
 
