@@ -4,6 +4,7 @@ import {PostType} from './postTypes';
 export const postMock: PostType[] = [
   {
     author: {
+      id: userMock.id,
       username: userMock.username,
       profileName: userMock.profileName,
       isVerified: userMock.isVerified,
@@ -20,6 +21,7 @@ export const postMock: PostType[] = [
   },
   {
     author: {
+      id: userMock.id,
       username: userMock.username,
       profileName: userMock.profileName,
       isVerified: userMock.isVerified,

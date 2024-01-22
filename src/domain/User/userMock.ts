@@ -1,6 +1,7 @@
 import {UserType} from './userType';
 
 export const userMock: UserType = {
+  id: 1,
   username: '@rafaelcastro',
   profileName: 'Rafa Castro',
   isVerified: true,

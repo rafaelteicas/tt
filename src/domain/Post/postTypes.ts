@@ -1,7 +1,10 @@
 import {UserType} from '../User/userType';
 
 export type PostType = {
-  author: UserType;
+  author: Pick<
+    UserType,
+    'id' | 'username' | 'profileName' | 'isVerified' | 'profileImage'
+  >;
   text: string;
   media?: {
     uri: string | string[];
