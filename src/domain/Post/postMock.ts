@@ -1,16 +1,16 @@
+import {userMock} from '../User/userMock';
 import {PostType} from './postTypes';
 
 export const postMock: PostType[] = [
   {
     author: {
-      username: '@rafaelcastro',
-      profileName: 'Rafa Castro',
-      isVerified: true,
-      profileImage:
-        'https://prefeitura.rio/wp-content/uploads/2021/12/WhatsApp-Image-2021-12-16-at-16.42.03.jpeg',
-      time: '',
+      username: userMock.username,
+      profileName: userMock.profileName,
+      isVerified: userMock.isVerified,
+      profileImage: userMock.profileImage,
     },
     metadata: {
+      time: '',
       comments: '100+',
       likes: '100+',
       shared: '100+',
@@ -20,14 +20,13 @@ export const postMock: PostType[] = [
   },
   {
     author: {
-      username: '@rafaelcastro',
-      profileName: 'Rafa Castro',
-      isVerified: true,
-      profileImage:
-        'https://prefeitura.rio/wp-content/uploads/2021/12/WhatsApp-Image-2021-12-16-at-16.42.03.jpeg',
-      time: '',
+      username: userMock.username,
+      profileName: userMock.profileName,
+      isVerified: userMock.isVerified,
+      profileImage: userMock.profileImage,
     },
     metadata: {
+      time: '',
       comments: '100+',
       likes: '100+',
       shared: '100+',

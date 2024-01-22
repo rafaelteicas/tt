@@ -1,17 +1,14 @@
+import {UserType} from '../User/userType';
+
 export type PostType = {
-  author: {
-    profileImage: string;
-    profileName: string;
-    username: string;
-    time: string;
-    isVerified: boolean;
-  };
+  author: UserType;
   text: string;
   media?: {
     uri: string | string[];
     height?: number;
   };
   metadata: {
+    time: string;
     comments: string;
     shared: string;
     likes: string;
