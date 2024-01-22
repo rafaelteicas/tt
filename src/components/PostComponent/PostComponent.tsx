@@ -6,7 +6,7 @@ import Icon from '../Icon/Icon';
 
 const PROFILE_IMAGE = 40;
 
-export function PostComponent({text, author, metadata}: PostType) {
+export function PostComponent({text, media, author, metadata}: PostType) {
   return (
     <View
       style={{
@@ -23,16 +23,26 @@ export function PostComponent({text, author, metadata}: PostType) {
       <View
         style={{
           gap: 5,
+          flex: 1,
         }}>
         <View style={{flexDirection: 'row', gap: 5}}>
           <Text bold>{author.profileName}</Text>
           <Text paragraph>{author.username}</Text>
         </View>
-        <Text paragraph>{text}</Text>
+        {media &&
+          (typeof media.uri === 'string' ? (
+            <Image
+              source={{uri: media.uri}}
+              style={{width: '100%', borderRadius: 16, aspectRatio: 16 / 9}}
+            />
+          ) : null)}
+        <Text paragraph style={{flex: 1}}>
+          {text}
+        </Text>
         <View
           style={{
+            flex: 1,
             flexDirection: 'row',
-            width: '100%',
             justifyContent: 'space-between',
             marginBottom: 5,
           }}>

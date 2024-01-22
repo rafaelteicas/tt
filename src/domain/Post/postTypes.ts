@@ -7,7 +7,10 @@ export type PostType = {
     isVerified: boolean;
   };
   text: string;
-  media: string;
+  media?: {
+    uri: string | string[];
+    height?: number;
+  };
   metadata: {
     comments: string;
     shared: string;

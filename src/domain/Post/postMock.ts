@@ -16,8 +16,7 @@ export const postMock: PostType[] = [
       shared: '100+',
       views: '100+',
     },
-    text: 'Olá gente, esse é o clone do X, esse é um post mockado',
-    media: '',
+    text: 'Fala galera, essa é mais um post do nosso tt',
   },
   {
     author: {
@@ -34,7 +33,9 @@ export const postMock: PostType[] = [
       shared: '100+',
       views: '100+',
     },
-    text: 'SALVE',
-    media: '',
+    text: 'Esse é o primeiro post do clone',
+    media: {
+      uri: 'https://uds.com.br/blog/wp-content/uploads/2022/05/desenvolvimento-de-aplicatovos-scaled.jpg',
+    },
   },
 ];
