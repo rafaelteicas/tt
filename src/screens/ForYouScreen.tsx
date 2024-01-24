@@ -26,7 +26,7 @@ export function ForYouScreen() {
   return (
     <View style={{backgroundColor: theme.backgroundColor, flex: 1}}>
       <FlatList
-        keyExtractor={item => item.text}
+        keyExtractor={item => item.id.toString()}
         data={posts}
         renderItem={renderItem}
         ItemSeparatorComponent={() => <Separator />}

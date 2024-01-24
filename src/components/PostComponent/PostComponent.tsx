@@ -1,12 +1,14 @@
-import {View, Image} from 'react-native';
+import {View, Image, Pressable} from 'react-native';
 import React from 'react';
 import {PostType} from '../../domain/Post/postTypes';
 import Text from '../Text/Text';
 import Icon from '../Icon/Icon';
+import {useNavigation} from '@react-navigation/native';
 
 const PROFILE_IMAGE = 40;
 
 export function PostComponent({text, media, author, metadata}: PostType) {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -14,12 +16,15 @@ export function PostComponent({text, media, author, metadata}: PostType) {
         paddingVertical: 10,
         flexDirection: 'row',
       }}>
-      <Image
-        source={{uri: author.profileImage}}
-        width={PROFILE_IMAGE}
-        height={PROFILE_IMAGE}
-        style={{borderRadius: PROFILE_IMAGE / 2, marginRight: 10}}
-      />
+      <Pressable
+        onPress={() => navigation.navigate('ProfileScreen', {id: author.id})}>
+        <Image
+          source={{uri: author.profileImage}}
+          width={PROFILE_IMAGE}
+          height={PROFILE_IMAGE}
+          style={{borderRadius: PROFILE_IMAGE / 2, marginRight: 10}}
+        />
+      </Pressable>
       <View
         style={{
           gap: 5,

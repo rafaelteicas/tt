@@ -1,7 +1,6 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {ForYouScreen} from '../screens/ForYouScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 import {AppHeader} from '../components/AppHeader/AppHeader';
 import {View} from 'react-native';
 import {useGetColors} from '../hooks/useGetColors';
@@ -28,8 +27,8 @@ export default function AppTopNavigator() {
           }}
         />
         <Tab.Screen
-          name="ProfileScreen"
-          component={ProfileScreen}
+          name="TrendingScreen"
+          component={ForYouScreen}
           options={{
             title: 'Trending',
           }}

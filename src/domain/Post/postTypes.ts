@@ -1,6 +1,7 @@
 import {UserType} from '../User/userType';
 
 export type PostType = {
+  id: number;
   author: Pick<
     UserType,
     'id' | 'username' | 'profileName' | 'isVerified' | 'profileImage'

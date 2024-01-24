@@ -13,18 +13,22 @@ export default function Text({
   paragraph,
   bold,
   fontSize,
+  style,
   ...textProps
 }: Props) {
   const {color} = useGetColors();
   return (
     <RNText
       {...textProps}
-      style={{
-        color: color,
-        opacity: paragraph ? 0.6 : undefined,
-        fontWeight: bold ? 'bold' : undefined,
-        fontSize,
-      }}>
+      style={[
+        {
+          color: color,
+          opacity: paragraph ? 0.6 : undefined,
+          fontWeight: bold ? 'bold' : undefined,
+          fontSize,
+        },
+        style,
+      ]}>
       {children}
     </RNText>
   );
