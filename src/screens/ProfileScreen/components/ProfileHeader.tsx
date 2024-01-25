@@ -4,20 +4,45 @@ import Animated from 'react-native-reanimated';
 import Text from '../../../components/Text/Text';
 import {UserType} from '../../../domain/User/userType';
 import {useGetColors} from '../../../hooks/useGetColors';
+import {BlurView} from '@react-native-community/blur';
 
 // const PROFILE_SCREEN_IMAGE_SIZE = 80;
 
 type Props = {
   animatedHeader: any;
   animatedImage: any;
+  animatedName: any;
+  animatedBlurView: any;
   user: UserType;
 };
 
-export function ProfileHeader({animatedHeader, animatedImage, user}: Props) {
-  const {backgroundColor} = useGetColors();
+export function ProfileHeader({
+  animatedHeader,
+  animatedImage,
+  animatedName,
+  animatedBlurView,
+  user,
+}: Props) {
+  const {backgroundColor, color} = useGetColors();
+  const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 
   return (
-    <Animated.View style={{backgroundColor, minHeight: MIN_HEADER_HEIGHT}}>
+    <Animated.View style={[{backgroundColor, minHeight: MIN_HEADER_HEIGHT}]}>
+      <AnimatedBlurView
+        blurAmount={1}
+        blurType={'dark'}
+        style={[
+          animatedBlurView,
+          {
+            position: 'absolute',
+            width: Dimensions.get('window').width,
+            zIndex: 2,
+            height: MIN_HEADER_HEIGHT,
+            maxHeight: MIN_HEADER_HEIGHT,
+            minHeight: MIN_HEADER_HEIGHT,
+          },
+        ]}
+      />
       <Animated.Image
         style={[styles.header, animatedHeader]}
         source={{uri: user.profileHeader}}
@@ -26,12 +51,28 @@ export function ProfileHeader({animatedHeader, animatedImage, user}: Props) {
         source={{uri: user.profileImage}}
         style={[animatedImage, styles.image]}
       />
+      <Animated.View style={[styles.name, {top: 10}, animatedName]}>
+        <Text
+          style={{
+            fontSize: 22,
+            fontWeight: 'bold',
+            color: 'white',
+          }}>
+          {user.profileName}
+        </Text>
+        <Text
+          style={{
+            color: 'white',
+          }}>
+          211 tweets
+        </Text>
+      </Animated.View>
       <Text
         style={{
-          marginTop: 10,
           fontSize: 18,
           paddingLeft: 10,
           fontWeight: 'bold',
+          color,
         }}>
         {user.profileName}
       </Text>
@@ -41,8 +82,8 @@ export function ProfileHeader({animatedHeader, animatedImage, user}: Props) {
 }
 
 const MAX_HEADER_HEIGHT = 120;
-const MIN_HEADER_HEIGHT = 70;
 const MAX_PROFILE_SIZE = 80;
+const MIN_HEADER_HEIGHT = 70;
 const MIN_PROFILE_SIZE = 40;
 
 const styles = StyleSheet.create({
@@ -51,12 +92,30 @@ const styles = StyleSheet.create({
     maxHeight: MAX_PROFILE_SIZE,
     minHeight: MIN_PROFILE_SIZE,
     minWidth: MIN_PROFILE_SIZE,
-    borderWidth: 5,
   },
   header: {
     position: 'absolute',
     width: Dimensions.get('window').width,
     height: MAX_HEADER_HEIGHT,
     minHeight: MIN_HEADER_HEIGHT,
+  },
+  iconsContainer: {
+    width: Dimensions.get('window').width,
+    position: 'absolute',
+    zIndex: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+  },
+  icon: {
+    width: 30,
+    height: 30,
+    backgroundColor: 'red',
+    borderRadius: 50 / 2,
+  },
+  name: {
+    position: 'absolute',
+    zIndex: 2,
+    left: 20,
   },
 });

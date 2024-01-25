@@ -34,6 +34,9 @@ export function PostComponent({text, media, author, metadata}: PostType) {
           <Text bold>{author.profileName}</Text>
           <Text paragraph>{author.username}</Text>
         </View>
+        <Text paragraph style={{flex: 1}}>
+          {text}
+        </Text>
         {media &&
           (typeof media.uri === 'string' ? (
             <Image
@@ -41,9 +44,6 @@ export function PostComponent({text, media, author, metadata}: PostType) {
               style={{width: '100%', borderRadius: 16, aspectRatio: 16 / 9}}
             />
           ) : null)}
-        <Text paragraph style={{flex: 1}}>
-          {text}
-        </Text>
         <View
           style={{
             flex: 1,

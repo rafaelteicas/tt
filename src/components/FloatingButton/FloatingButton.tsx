@@ -31,5 +31,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.blue,
     bottom: 20,
     right: 20,
+    elevation: 5,
   },
 });
