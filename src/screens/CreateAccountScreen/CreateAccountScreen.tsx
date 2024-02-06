@@ -1,22 +1,26 @@
 import {ColorValue, Image, StyleSheet, View} from 'react-native';
 import React from 'react';
-import AuthHeader from '../components/AuthHeader/AuthHeader';
-import {useGetColors} from '../hooks/useGetColors';
-import {useSafeArea} from '../hooks/useSafeArea';
-import Text from '../components/Text/Text';
-import ButtonAndroid from '../components/ButtonAndroid/ButtonAndroid';
-import {AppStackNavType} from '../routes/types';
+import AuthHeader from '../../components/AuthHeader/AuthHeader';
+import {useGetColors} from '../../hooks/useGetColors';
+import {useSafeArea} from '../../hooks/useSafeArea';
+import Text from '../../components/Text/Text';
+import ButtonAndroid from '../../components/ButtonAndroid/ButtonAndroid';
+import {AppStackNavType} from '../../routes/types';
 
 const BUTTON_HEIGHT = 44;
 const FONTSIZE = 16;
 const DEFAULT_PADDING_HORIZONTAL = 30;
 
-export default function CreateAccountScreen({
+export function CreateAccountScreen({
   navigation,
   route,
 }: AppStackNavType<'CreateAccountScreen'>) {
   const {top} = useSafeArea();
-  const {backgroundColor, separatorColor} = useGetColors();
+  const {backgroundColor, separatorColor, color} = useGetColors();
+
+  function navigateToSelectLanguage() {
+    navigation.navigate('SelectLanguageScreen');
+  }
 
   return (
     <View
@@ -38,11 +42,12 @@ export default function CreateAccountScreen({
         <ButtonAndroid
           title="Continuar com Google"
           bold
-          outline={{color: '#000', width: 0.5}}
+          textColor={backgroundColor}
+          backgroundColor={color}
           borderRadius={30}
           LeftComponent={
             <Image
-              source={require('../assets/icons/Google.png')}
+              source={require('../../assets/icons/Google.png')}
               style={{width: 20, height: 20}}
             />
           }
@@ -57,17 +62,18 @@ export default function CreateAccountScreen({
         <Separator separatorColor={separatorColor} />
         <ButtonAndroid
           title="Criar conta"
-          backgroundColor={'#000'}
-          textColor={'#FFF'}
+          textColor={backgroundColor}
+          backgroundColor={color}
           bold
           borderRadius={30}
           customStyle={{justifyContent: 'center', alignItems: 'center'}}
           buttonHeight={BUTTON_HEIGHT}
           fontSize={FONTSIZE}
+          onPress={navigateToSelectLanguage}
         />
         {!route.params.hide && (
           <View style={styles.textContainer}>
-            <Text paragraph>
+            <Text style={{marginBottom: 50, fontSize: 12}}>
               Ao se inscrever você concorda com nossos Termos, a Política de
               Privacidade e o Uso de Cookies.
             </Text>

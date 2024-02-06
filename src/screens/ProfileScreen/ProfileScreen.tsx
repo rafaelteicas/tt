@@ -15,6 +15,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
+import Separator from '../../components/Separator/Separator';
 
 const TopNavigator = createMaterialTopTabNavigator();
 
@@ -23,7 +24,7 @@ const MIN_HEADER_HEIGHT = 70;
 const MAX_PROFILE_SIZE = 80;
 // const MIN_PROFILE_SIZE = 40;
 
-export default function ProfileScreen() {
+export function ProfileScreen() {
   const {backgroundColor, color} = useGetColors();
   const posts = useGetPosts();
   const user = useGetUser();
@@ -113,6 +114,7 @@ export default function ProfileScreen() {
         scrollEventThrottle={16}
         onScroll={scrollHandler}
         initialNumToRender={2}
+        ItemSeparatorComponent={() => <Separator />}
       />
     );
   }

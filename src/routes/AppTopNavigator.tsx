@@ -1,6 +1,6 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {ForYouScreen} from '../screens/ForYouScreen';
+import {ForYouScreen} from '../screens/ForYouScreen/ForYouScreen';
 import {AppHeader} from '../components/AppHeader/AppHeader';
 import {View} from 'react-native';
 import {useGetColors} from '../hooks/useGetColors';

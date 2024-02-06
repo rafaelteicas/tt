@@ -1,9 +1,10 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AppDrawerNavigator from './AppDrawerNavigator';
-import SearchScreen from '../screens/SearchScreen';
-import CreateAccountScreen from '../screens/CreateAccountScreen';
-import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
+import {SearchScreen} from '../screens/SearchScreen/SearchScreen';
+import {CreateAccountScreen} from '../screens/CreateAccountScreen/CreateAccountScreen';
+import {ProfileScreen} from '../screens/ProfileScreen/ProfileScreen';
+import {SelectLanguageScreen} from '../screens/SelectLanguageScreen/SelectLanguage';
 
 export type StackTypes = {
   HomeScreen: undefined;
@@ -15,6 +16,7 @@ export type StackTypes = {
   ProfileScreen: {
     id: number;
   };
+  SelectLanguageScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<StackTypes>();
@@ -34,6 +36,10 @@ export default function AppStackNavigator() {
         component={CreateAccountScreen}
       />
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Stack.Screen
+        name="SelectLanguageScreen"
+        component={SelectLanguageScreen}
+      />
     </Stack.Navigator>
   );
 }
