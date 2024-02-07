@@ -2,7 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {useGetColors} from '../../hooks/useGetColors';
 import {TextInput} from 'react-native-gesture-handler';
-import Icon from '../Icon/Icon';
+import {Icon} from '../Icon/Icon';
 
 export function SearchInput() {
   const {searchBarColor, searchBarBorderColor, searchBarPlaceholderColor} =

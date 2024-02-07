@@ -1,31 +1,26 @@
-import {
-  Dimensions,
-  KeyboardAvoidingView,
-  Pressable,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {Dimensions, KeyboardAvoidingView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {useGetColors} from '../../hooks/useGetColors';
-import AuthHeader from '../../components/AuthHeader/AuthHeader';
-import {useSafeArea} from '../../hooks/useSafeArea';
-import Text from '../../components/Text/Text';
+import {Text} from '../../components/Text/Text';
 import {TextInput} from 'react-native-paper';
+import {AppStackNavType} from '../../routes/types';
+import BottomButtons from '../../components/BottomButtons/BottomButtons';
+import Screen from '../../components/Screen/Screen';
 
-export function AccountDataScreen() {
-  const {backgroundColor, color, separatorColor} = useGetColors();
-  const {top, bottom} = useSafeArea();
+export function AccountDataScreen({
+  navigation,
+}: AppStackNavType<'AccountDataScreen'>) {
+  const {backgroundColor, color} = useGetColors();
   const BLUE = '#1d9cef';
+
+  function navigateToPasswordScreen() {
+    navigation.navigate('PasswordScreen');
+  }
+
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor,
-        paddingTop: top,
-      }}>
-      <AuthHeader />
-      <View style={{paddingHorizontal: 20, flex: 1}}>
-        <Text bold fontSize={24} style={{color}}>
+    <Screen>
+      <View style={{flex: 1, paddingHorizontal: 20}}>
+        <Text bold fontSize={28} style={{color}}>
           Criar sua conta
         </Text>
         <View style={{flex: 1, justifyContent: 'center'}}>
@@ -38,6 +33,7 @@ export function AccountDataScreen() {
               autoFocus
               label="Nome"
               textColor={color}
+              outlineColor={color}
             />
             <TextInput
               selectionColor={BLUE}
@@ -45,6 +41,7 @@ export function AccountDataScreen() {
               mode="outlined"
               style={{backgroundColor}}
               label="Celular ou e-mail"
+              outlineColor={color}
               textColor={color}
             />
             <TextInput
@@ -53,29 +50,17 @@ export function AccountDataScreen() {
               mode="outlined"
               style={{backgroundColor}}
               label="Data de nascimento"
+              outlineColor={color}
               textColor={color}
             />
           </KeyboardAvoidingView>
         </View>
       </View>
-      <View
-        style={[
-          styles.bottomContainer,
-          {borderTopColor: separatorColor, paddingBottom: bottom},
-        ]}>
-        <Pressable
-          style={[
-            styles.btn,
-            {
-              backgroundColor: color,
-            },
-          ]}>
-          <Text style={{color: backgroundColor, fontWeight: 'bold'}}>
-            Próximo
-          </Text>
-        </Pressable>
-      </View>
-    </View>
+      <BottomButtons
+        titleRightButton="Próximo"
+        onPressRightButton={navigateToPasswordScreen}
+      />
+    </Screen>
   );
 }
 

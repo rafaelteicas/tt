@@ -10,7 +10,7 @@ interface Props extends TextProps {
   color?: any;
 }
 
-export default function Icon({name, size = 20, color, ...textProps}: Props) {
+export function Icon({name, size = 20, color, ...textProps}: Props) {
   const AnimatedIcon = Animated.createAnimatedComponent(IonIcons);
   const colors = useGetColors();
   return (

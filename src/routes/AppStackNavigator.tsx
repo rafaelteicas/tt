@@ -6,6 +6,7 @@ import {CreateAccountScreen} from '../screens/CreateAccountScreen/CreateAccountS
 import {ProfileScreen} from '../screens/ProfileScreen/ProfileScreen';
 import {SelectLanguageScreen} from '../screens/SelectLanguageScreen/SelectLanguage';
 import {AccountDataScreen} from '../screens/AccountDataScreen/AccountDataScreen';
+import PasswordScreen from '../screens/PasswordScreen/PasswordScreen';
 
 export type StackTypes = {
   HomeScreen: undefined;
@@ -19,6 +20,7 @@ export type StackTypes = {
   };
   SelectLanguageScreen: undefined;
   AccountDataScreen: undefined;
+  PasswordScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<StackTypes>();
@@ -43,6 +45,7 @@ export default function AppStackNavigator() {
         component={SelectLanguageScreen}
       />
       <Stack.Screen name="AccountDataScreen" component={AccountDataScreen} />
+      <Stack.Screen name="PasswordScreen" component={PasswordScreen} />
     </Stack.Navigator>
   );
 }

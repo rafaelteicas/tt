@@ -1,11 +1,12 @@
 import {ColorValue, Image, StyleSheet, View} from 'react-native';
 import React from 'react';
-import AuthHeader from '../../components/AuthHeader/AuthHeader';
+import {AuthHeader} from '../../components/AuthHeader/AuthHeader';
 import {useGetColors} from '../../hooks/useGetColors';
 import {useSafeArea} from '../../hooks/useSafeArea';
-import Text from '../../components/Text/Text';
+import {Text} from '../../components/Text/Text';
 import ButtonAndroid from '../../components/ButtonAndroid/ButtonAndroid';
 import {AppStackNavType} from '../../routes/types';
+import {useFloatingButton} from '../../services/FloatingButton/useFloatingButton';
 
 const BUTTON_HEIGHT = 44;
 const FONTSIZE = 16;
@@ -17,6 +18,8 @@ export function CreateAccountScreen({
 }: AppStackNavType<'CreateAccountScreen'>) {
   const {top} = useSafeArea();
   const {backgroundColor, separatorColor, color} = useGetColors();
+  const {hideFloatingButton} = useFloatingButton();
+  hideFloatingButton();
 
   function navigateToSelectLanguage() {
     navigation.navigate('SelectLanguageScreen');
@@ -28,7 +31,7 @@ export function CreateAccountScreen({
         styles.container,
         {backgroundColor: backgroundColor, paddingTop: top},
       ]}>
-      <AuthHeader onPressCloseIcon={navigation.goBack} />
+      <AuthHeader onPressIcon={navigation.goBack} />
       <View
         style={
           (styles.textContainer,

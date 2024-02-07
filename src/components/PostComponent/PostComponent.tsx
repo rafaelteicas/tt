@@ -1,8 +1,8 @@
 import {View, Image, Pressable} from 'react-native';
 import React from 'react';
 import {PostType} from '../../domain/Post/postTypes';
-import Text from '../Text/Text';
-import Icon from '../Icon/Icon';
+import {Text} from '../Text/Text';
+import {Icon} from '../Icon/Icon';
 import {useNavigation} from '@react-navigation/native';
 
 const PROFILE_IMAGE = 40;

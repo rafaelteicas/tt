@@ -17,7 +17,7 @@ import {
 } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import {theme} from '../../theme/theme';
-import Icon from '../../components/Icon/Icon';
+import {Icon} from '../../components/Icon/Icon';
 
 const drawerIcons = [
   {

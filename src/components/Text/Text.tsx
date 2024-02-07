@@ -8,7 +8,7 @@ interface Props extends TextProps {
   fontSize?: number;
 }
 
-export default function Text({
+export function Text({
   children,
   paragraph,
   bold,

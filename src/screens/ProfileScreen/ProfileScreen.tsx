@@ -7,7 +7,7 @@ import {useGetPosts} from '../../domain/Post/useCases/useGetPosts';
 import {PostComponent} from '../../components/PostComponent/PostComponent';
 import {PostType} from '../../domain/Post/postTypes';
 import {ProfileHeader} from './components/ProfileHeader';
-import Text from '../../components/Text/Text';
+import {Text} from '../../components/Text/Text';
 import Animated, {
   Extrapolation,
   interpolate,

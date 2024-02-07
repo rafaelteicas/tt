@@ -1,25 +1,30 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableNativeFeedback, View} from 'react-native';
 import React from 'react';
-import Icon from '../Icon/Icon';
+import {Icon} from '../Icon/Icon';
 import {useGetColors} from '../../hooks/useGetColors';
 import Logo from '../../assets/Logo';
 
-const ICON_SIZE = 28;
+const ICON_SIZE = 20;
 
 type Props = {
-  onPressCloseIcon?: () => void;
+  onPressIcon?: () => void;
+  icon?: 'close-outline' | 'arrow-back';
 };
 
-export default function AuthHeader({onPressCloseIcon}: Props) {
-  const {color} = useGetColors();
+export function AuthHeader({onPressIcon, icon = 'close-outline'}: Props) {
+  const {color, rippleColor} = useGetColors();
   return (
     <View style={styles.container}>
-      <Icon
-        name="close-outline"
-        color={color}
-        size={ICON_SIZE}
-        onPress={onPressCloseIcon}
-      />
+      <TouchableNativeFeedback
+        background={TouchableNativeFeedback.Ripple(rippleColor, true)}
+        style={{width: ICON_SIZE, height: ICON_SIZE, padding: 20}}>
+        <Icon
+          name={icon}
+          color={color}
+          size={ICON_SIZE}
+          onPress={onPressIcon}
+        />
+      </TouchableNativeFeedback>
       <Logo />
       <View style={styles.hiddenView} />
     </View>
@@ -28,7 +33,6 @@ export default function AuthHeader({onPressCloseIcon}: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
