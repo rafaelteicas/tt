@@ -5,6 +5,7 @@ import {SearchScreen} from '../screens/SearchScreen/SearchScreen';
 import {CreateAccountScreen} from '../screens/CreateAccountScreen/CreateAccountScreen';
 import {ProfileScreen} from '../screens/ProfileScreen/ProfileScreen';
 import {SelectLanguageScreen} from '../screens/SelectLanguageScreen/SelectLanguage';
+import {AccountDataScreen} from '../screens/AccountDataScreen/AccountDataScreen';
 
 export type StackTypes = {
   HomeScreen: undefined;
@@ -17,6 +18,7 @@ export type StackTypes = {
     id: number;
   };
   SelectLanguageScreen: undefined;
+  AccountDataScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<StackTypes>();
@@ -40,6 +42,7 @@ export default function AppStackNavigator() {
         name="SelectLanguageScreen"
         component={SelectLanguageScreen}
       />
+      <Stack.Screen name="AccountDataScreen" component={AccountDataScreen} />
     </Stack.Navigator>
   );
 }

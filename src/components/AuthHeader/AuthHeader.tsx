@@ -31,7 +31,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     width: '100%',
+    marginBottom: 20,
   },
   hiddenView: {
     width: ICON_SIZE,
