@@ -7,21 +7,29 @@ import ModalProvider from './src/services/Modal/ModalProvider';
 import Modal from './src/services/Modal/Modal';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import ThemeProvider from './src/services/ThemeProvider/ThemeProvider';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {PaperProvider} from 'react-native-paper';
+
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
-      <SafeAreaProvider>
-        <ThemeProvider>
-          <FloatingButtonProvider>
-            <ModalProvider>
-              <Router />
-              <Modal />
-            </ModalProvider>
-            <FloatingButton />
-          </FloatingButtonProvider>
-        </ThemeProvider>
-      </SafeAreaProvider>
+      <QueryClientProvider client={queryClient}>
+        <PaperProvider>
+          <SafeAreaProvider>
+            <ThemeProvider>
+              <FloatingButtonProvider>
+                <ModalProvider>
+                  <Router />
+                  <Modal />
+                </ModalProvider>
+                <FloatingButton />
+              </FloatingButtonProvider>
+            </ThemeProvider>
+          </SafeAreaProvider>
+        </PaperProvider>
+      </QueryClientProvider>
     </GestureHandlerRootView>
   );
 }

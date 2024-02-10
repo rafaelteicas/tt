@@ -1,6 +1,7 @@
 export * from './TextInput/TextInput';
 export * from './Screen/Screen';
 export * from './BottomButtons/BottomButtons';
+export * from './Button/Button';
 export * from './Text/Text';
 export * from './AuthHeader/AuthHeader';
 export * from './ButtonAndroid/ButtonAndroid';

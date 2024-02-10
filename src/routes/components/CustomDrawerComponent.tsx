@@ -2,8 +2,12 @@ import React, {useState} from 'react';
 import {DrawerContentComponentProps} from '@react-navigation/drawer';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {useGetColors} from '../../hooks/useGetColors';
-import Button from '../../components/Button/Button';
-import {ButtonAndroid, Separator, ThemeSelector} from '../../components';
+import {
+  ButtonAndroid,
+  Separator,
+  ThemeSelector,
+  Button,
+} from '../../components';
 import {useModal} from '../../services/Modal/useModal';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import {useThemeProvider} from '../../services/ThemeProvider/useThemeProvider';

@@ -10,7 +10,7 @@ interface Props extends ButtonProps {
   onPress?: () => void;
 }
 
-export default function Button({title, outline, onPress}: Props) {
+export function Button({title, outline, onPress}: Props) {
   const {color} = useGetColors();
   return (
     <TouchableWithoutFeedback

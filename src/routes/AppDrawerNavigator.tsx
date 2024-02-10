@@ -1,12 +1,12 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import AppTopNavigator from './AppTopNavigator';
+import {AppTopNavigator} from './AppTopNavigator';
 import {useGetColors} from '../hooks/useGetColors';
 import {CustomDrawerComponent} from './components/CustomDrawerComponent';
 
 const Drawer = createDrawerNavigator();
 
-export default function AppDrawerNavigator() {
+export function AppDrawerNavigator() {
   const {backgroundColor} = useGetColors();
   return (
     <Drawer.Navigator

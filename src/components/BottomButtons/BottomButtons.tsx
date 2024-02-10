@@ -7,6 +7,7 @@ type Props = {
   onPressRightButton?: () => void;
   leftButton?: boolean;
   titleRightButton: string;
+  disabledRight?: boolean;
 };
 
 export function BottomButtons({
@@ -14,6 +15,7 @@ export function BottomButtons({
   onPressRightButton,
   leftButton = false,
   titleRightButton,
+  disabledRight,
 }: Props) {
   const {separatorColor, color, backgroundColor} = useGetColors();
 
@@ -48,6 +50,7 @@ export function BottomButtons({
         )}
         <Pressable
           onPress={onPressRightButton}
+          disabled={disabledRight}
           style={{
             backgroundColor: color,
             padding: 12,

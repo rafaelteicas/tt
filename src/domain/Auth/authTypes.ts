@@ -1,1 +1,6 @@
-export type CreateAccountType = {};
+export type CreateAccountType = {
+  name: string;
+  email: string;
+  birthday: string;
+  password: string;
+};

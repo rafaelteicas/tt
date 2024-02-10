@@ -8,7 +8,7 @@ import {CustomAppTopNavigator} from './components/CustomAppTopNavigator';
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function AppTopNavigator() {
+export function AppTopNavigator() {
   const {backgroundColor, color} = useGetColors();
   return (
     <View style={{flex: 1, backgroundColor: backgroundColor}}>
