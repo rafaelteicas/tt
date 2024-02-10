@@ -28,7 +28,7 @@ type ButtonAndroidProps = {
   fontSize?: number;
 };
 
-export default function ButtonAndroid({
+export function ButtonAndroid({
   title,
   RightComponent,
   LeftComponent,

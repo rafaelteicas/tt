@@ -9,7 +9,7 @@ type Props = {
   titleRightButton: string;
 };
 
-export default function BottomButtons({
+export function BottomButtons({
   onPressLeftButton,
   onPressRightButton,
   leftButton = false,

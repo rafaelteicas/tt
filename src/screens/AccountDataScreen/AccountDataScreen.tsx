@@ -6,13 +6,10 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import {TextInput, Screen, BottomButtons, Text} from '../../components';
 import React, {useEffect, useState} from 'react';
 import {useGetColors} from '../../hooks/useGetColors';
-import {Text} from '../../components/Text/Text';
-import {TextInput} from 'react-native-paper';
 import {AppStackNavType} from '../../routes/types';
-import BottomButtons from '../../components/BottomButtons/BottomButtons';
-import Screen from '../../components/Screen/Screen';
 import DatePicker from 'react-native-date-picker';
 import {format} from 'date-fns';
 
@@ -29,14 +26,16 @@ export function AccountDataScreen({
     }
   }, [datePicker]);
 
-  const BLUE = '#1d9cef';
-
   function navigateToPasswordScreen() {
     navigation.navigate('PasswordScreen');
   }
 
   function handleOpenDatePicker() {
     setDatePicker(true);
+  }
+
+  function handleCloseDatePicker() {
+    setDatePicker(false);
   }
 
   return (
@@ -49,37 +48,15 @@ export function AccountDataScreen({
         </Text>
         <View style={{flex: 1, justifyContent: 'center'}}>
           <KeyboardAvoidingView>
+            <TextInput label="Nome" onPress={handleCloseDatePicker} />
             <TextInput
-              onPressIn={() => setDatePicker(false)}
-              selectionColor={BLUE}
-              activeOutlineColor={BLUE}
-              mode="outlined"
-              style={{backgroundColor}}
-              autoFocus
-              label="Nome"
-              textColor={color}
-              outlineColor={color}
-            />
-            <TextInput
-              onPressIn={() => setDatePicker(false)}
-              selectionColor={BLUE}
-              activeOutlineColor={BLUE}
-              mode="outlined"
-              style={{backgroundColor}}
               label="Celular ou e-mail"
-              outlineColor={color}
-              textColor={color}
+              onPress={handleCloseDatePicker}
             />
             <TextInput
-              value={format(date, 'dd/MM/yyyy')}
-              selectionColor={BLUE}
-              activeOutlineColor={BLUE}
-              mode="outlined"
-              style={{backgroundColor}}
               label="Data de nascimento"
-              outlineColor={color}
-              textColor={color}
-              onPressIn={handleOpenDatePicker}
+              value={format(date, 'dd/MM/yyyy')}
+              onPress={handleOpenDatePicker}
               showSoftInputOnFocus={false}
             />
           </KeyboardAvoidingView>

@@ -1,8 +1,8 @@
 import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import {useGetColors} from '../../hooks/useGetColors';
-import Separator from '../Separator/Separator';
-import RadioButton from '../RadioButton/RadioButton';
+import {Separator} from '../Separator/Separator';
+import {RadioButton} from '../RadioButton/RadioButton';
 import {useThemeProvider} from '../../services/ThemeProvider/useThemeProvider';
 
 const mapThemeSelector = [
@@ -31,7 +31,7 @@ const mapDarkThemeSelector = [
   },
 ];
 
-export default function ThemeSelector() {
+export function ThemeSelector() {
   const {theme, darkMode, changeDarkMode, changeColorScheme} =
     useThemeProvider();
 

@@ -1,10 +1,8 @@
 import {ColorValue, Image, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {AuthHeader} from '../../components/AuthHeader/AuthHeader';
+import {Text, AuthHeader, ButtonAndroid} from '../../components';
 import {useGetColors} from '../../hooks/useGetColors';
 import {useSafeArea} from '../../hooks/useSafeArea';
-import {Text} from '../../components/Text/Text';
-import ButtonAndroid from '../../components/ButtonAndroid/ButtonAndroid';
 import {AppStackNavType} from '../../routes/types';
 import {useFloatingButton} from '../../services/FloatingButton/useFloatingButton';
 

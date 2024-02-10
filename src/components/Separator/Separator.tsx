@@ -8,7 +8,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-export default function Separator({marginTop, marginBottom, style}: Props) {
+export function Separator({marginTop, marginBottom, style}: Props) {
   const {separatorColor} = useGetColors();
   return (
     <View

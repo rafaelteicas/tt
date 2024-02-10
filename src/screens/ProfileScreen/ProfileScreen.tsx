@@ -4,10 +4,9 @@ import {ListRenderItemInfo, StatusBar, View} from 'react-native';
 import {useGetColors} from '../../hooks/useGetColors';
 import {useGetUser} from '../../domain/User/useCases/useGetUser';
 import {useGetPosts} from '../../domain/Post/useCases/useGetPosts';
-import {PostComponent} from '../../components/PostComponent/PostComponent';
 import {PostType} from '../../domain/Post/postTypes';
 import {ProfileHeader} from './components/ProfileHeader';
-import {Text} from '../../components/Text/Text';
+import {Text, Separator, PostComponent} from '../../components';
 import Animated, {
   Extrapolation,
   interpolate,
@@ -15,7 +14,6 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
-import Separator from '../../components/Separator/Separator';
 
 const TopNavigator = createMaterialTopTabNavigator();
 

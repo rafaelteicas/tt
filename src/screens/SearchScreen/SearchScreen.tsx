@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {useGetColors} from '../../hooks/useGetColors';
-import {Header} from '../../components/Header/Header';
+import {Header} from '../../components';
 import {useSafeArea} from '../../hooks/useSafeArea';
 
 export function SearchScreen() {

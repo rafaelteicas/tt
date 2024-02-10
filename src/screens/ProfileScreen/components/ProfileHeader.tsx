@@ -1,7 +1,7 @@
 import React from 'react';
 import {Dimensions, StyleSheet} from 'react-native';
 import Animated from 'react-native-reanimated';
-import {Text} from '../../../components/Text/Text';
+import {Text} from '../../../components';
 import {UserType} from '../../../domain/User/userType';
 import {useGetColors} from '../../../hooks/useGetColors';
 import {BlurView} from '@react-native-community/blur';

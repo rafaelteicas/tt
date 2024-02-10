@@ -1,11 +1,8 @@
 import {View} from 'react-native';
 import React from 'react';
 import {AppStackNavType} from '../../routes/types';
-import {Text} from '../../components/Text/Text';
-import {SearchInput} from '../../components/SearchInput/SearchInput';
+import {Text, BottomButtons, Screen, SearchInput} from '../../components';
 import {useFloatingButton} from '../../services/FloatingButton/useFloatingButton';
-import BottomButtons from '../../components/BottomButtons/BottomButtons';
-import Screen from '../../components/Screen/Screen';
 
 export function SelectLanguageScreen({
   navigation,

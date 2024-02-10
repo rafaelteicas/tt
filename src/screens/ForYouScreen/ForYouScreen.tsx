@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
 import {useGetColors} from '../../hooks/useGetColors';
 import {FlatList, ListRenderItemInfo, View} from 'react-native';
+import {PostComponent, Separator} from '../../components';
 import {useFloatingButton} from '../../services/FloatingButton/useFloatingButton';
 import {useGetPosts} from '../../domain/Post/useCases/useGetPosts';
 import {PostType} from '../../domain/Post/postTypes';
-import {PostComponent} from '../../components/PostComponent/PostComponent';
-import Separator from '../../components/Separator/Separator';
 
 export function ForYouScreen() {
   const theme = useGetColors();

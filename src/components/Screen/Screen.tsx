@@ -4,7 +4,7 @@ import {useGetColors} from '../../hooks/useGetColors';
 import {AuthHeader} from '../AuthHeader/AuthHeader';
 import {useSafeArea} from '../../hooks/useSafeArea';
 
-export default function Screen({children}: {children: React.ReactNode}) {
+export function Screen({children}: {children: React.ReactNode}) {
   const {backgroundColor} = useGetColors();
   const {bottom, top} = useSafeArea();
   return (

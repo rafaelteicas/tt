@@ -9,7 +9,7 @@ type Props = {
   setSelected: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function RadioButton({selected, setSelected}: Props) {
+export function RadioButton({selected, setSelected}: Props) {
   return (
     <View style={styles.container}>
       <TouchableOpacity

@@ -1,10 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import Screen from '../../components/Screen/Screen';
+import {Icon, Screen, Text} from '../../components';
 import {useGetColors} from '../../hooks/useGetColors';
-import {Text} from '../../components/Text/Text';
 import {TextInput} from 'react-native-paper';
-import {Icon} from '../../components/Icon/Icon';
 
 export default function PasswordScreen() {
   const {color, backgroundColor} = useGetColors();
